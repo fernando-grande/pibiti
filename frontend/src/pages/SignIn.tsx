@@ -2,8 +2,6 @@ import Layout from "../components/Layout";
 
 function SignIn() {
 
-    
-
     return (
         <Layout>
             <div className="flex items-center justify-center h-full bg-gray-50 ">

@@ -6,21 +6,10 @@ import ExperimentPlanning from "./FormData/ExperimentPlanning2"
 import Execution from "./FormData/Execution2"
 import Analysis from "./FormData/Analysis2"
 import Discussion from "./FormData/Discussion2"
+import { useRegister2 } from "./useRegister2"
 
 function FormRegister2() {
-    const [currentForm, setCurrentForm] = useState<number>(1)
-
-    const nextForm = () => {
-        setCurrentForm((currentForm) => currentForm + 1)
-    }
-
-    const prevForm = () => {
-        setCurrentForm((currentForm) => currentForm - 1)
-    }
-
-    const handleSubmit = () => {
-        console.log("submited!!")
-    }
+    const {currentForm, nextForm, prevForm, handleSubmit} = useRegister2()
 
     const renderForm = () => {
         switch(currentForm) {
