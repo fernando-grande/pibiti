@@ -5,7 +5,7 @@ export const required = z.string({
     invalid_type_error: "This input should be a string"
 })
 
-export const genInfoSchema = z.object({
+export const generalInfoSchema = z.object({
     authorsName: required.min(1),
     university: required.min(1),
     contactEmail: required.email("Invalid Email")
