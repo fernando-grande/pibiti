@@ -1,14 +1,14 @@
 import Layout from "../../components/Layout"
-import GeneralInformation from "./FormData/GeneralInformation2"
+import { GeneralInformation } from "./FormData/GeneralInformation"
 import Documentation from "./FormData/Documentation2"
 import ExperimentPlanning from "./FormData/ExperimentPlanning2"
 import Execution from "./FormData/Execution2"
 import Analysis from "./FormData/Analysis2"
 import Discussion from "./FormData/Discussion2"
-import { useRegister2 } from "./useRegister2"
+import { useRegister } from "./useRegister"
 
 function FormRegister2() {
-    const {currentForm, nextForm, prevForm, handleSubmit} = useRegister2()
+    const {currentForm, nextForm, prevForm, handleSubmit} = useRegister()
 
     const renderForm = () => {
         switch(currentForm) {

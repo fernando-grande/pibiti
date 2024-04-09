@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export function useRegister2(){
+export function useRegister(){
     const [currentForm, setCurrentForm] = useState<number>(1)
 
     const nextForm = () => {
