@@ -2,14 +2,15 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+// import { useFormularioContext } from "../../../FormularioContext"
 
 interface GeneralInformationProps {
     onNext: () => void
 }
 
 const generalInfoSchema = z.object({
-    authorsName: z.string(),
-    university: z.string(),
+    authorsName: z.string().min(1, "This field is mandatory"),
+    university: z.string().min(1, "This field is mandatory"),
     addres: z.string(),
     contactEmail: z.string()
 })
@@ -23,13 +24,16 @@ export function GeneralInformation({onNext}: GeneralInformationProps) {
         resolver: zodResolver(generalInfoSchema),
     })
 
-    function printConsole(data: any) {
+
+    // const { values } = useFormularioContext();
+
+    function printData(data: any) {
         setOutput(JSON.stringify(data, null, 4))
     }
 
     return (
         <main className="flex items-center justify-center h-full bg-gray-50">
-            <form onSubmit={handleSubmit(printConsole)} className="m-12 h-auto bg-white rounded-md px-6 py-4 border-[1px]">
+            <form onSubmit={handleSubmit(printData)} className="flex flex-col m-12 h-auto bg-white rounded-md px-6 py-4 border-[1px]">
                 <p className="font-bold text-2xl mb-6">GENERAL INFORMATION</p>
 
                 <label htmlFor="authorsName">Authors Name:</label>
@@ -48,8 +52,12 @@ export function GeneralInformation({onNext}: GeneralInformationProps) {
                 <input type="contactEmail" className="w-96 border-[1px] p-2 rounded-md mb-6" {...register('contactEmail')} />
                 {errors.contactEmail && <span>{errors.contactEmail.message}</span>}
 
-                <button type="submit" className="font-bold text-white mb-6 border-[1px] p-2 rounded-md bg-sky-700 w-24" >
+                <button onClick={onNext} className="font-bold text-white mb-6 border-[1px] p-2 rounded-md bg-sky-700 w-24" >
                     NEXT
+                </button>
+
+                <button type="submit" className="font-bold text-white mb-6 border-[1px] p-2 rounded-md bg-sky-700 w-24">
+                    PRINT DATA
                 </button>
 
                 <pre>{output}</pre>
